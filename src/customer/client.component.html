@@ -1,5 +1,5 @@
 
-<form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+<form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Company (disabled)</mat-label>
     <input matInput disabled value="Google">
@@ -10,13 +10,13 @@
       <td>
         <mat-form-field class="example-full-width">
           <mat-label>First name</mat-label>
-          <input matInput formControlName="firstName">
+          <input matInput>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field class="example-full-width">
           <mat-label>Long Last Name That Will Be Truncated</mat-label>
-          <input matInput formControlName="lastName">
+          <input matInput>
         </mat-form-field>
       </td>
     </tr>
@@ -51,8 +51,7 @@
         <mat-form-field class="example-full-width">
           <mat-label>Postal Code</mat-label>
           <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
-          <mat-hint>{{postalCode.value.length}} / 5</mat-hint>
-          <button type="submit" >Go to next step</button>
+          <mat-hint >{{postalCode.value.length}} / 5</mat-hint>
         </mat-form-field>
       </td>
     </tr>
