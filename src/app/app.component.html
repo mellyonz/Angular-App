@@ -9,16 +9,19 @@
 
 
 
-<ag-grid-angular *ngIf="isClientShown"
+<ag-grid-angular
+                 *ngIf="isClientShown"
                  style="width: 500px; height: 500px;"
                  class="ag-theme-alpine"
+                 [gridOptions]="gridOptions"
                  [rowData]="rowData"
                  [columnDefs]="columnDefs"
                  (cellClicked)="onCellClicked($event)">
 </ag-grid-angular>
 
 
-<ag-grid-angular *ngIf="isCustomerShown"
+<ag-grid-angular
+                 *ngIf="isCustomerShown"
                  style="width: 500px; height: 500px;"
                  class="ag-theme-alpine"
                  [rowData]="rowData2"
