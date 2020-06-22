@@ -1,0 +1,75 @@
+
+  <form class="form-style">
+    <ng-container [formGroup]="customerName">
+      <mat-form-field class="example-full-width">
+        <mat-label>Customer</mat-label>
+        <mat-select required [formControl]="selected" >
+          <mat-option></mat-option>
+          <mat-option *ngFor="let customerName of invoiceFormData[0].customerName" [value]="customerName.id_customerName">
+            {{customerName.value_customerName}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>This field is required</mat-hint>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container [formGroup]="invoiceID">
+      <mat-form-field class="example-full-width">
+        <mat-label>Invoice ID</mat-label>
+        <input matInput type="email" formControlName={{invoiceFormData[0].invoiceID[0].id_invoiceID}}>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container [formGroup]="productID">
+      <mat-form-field class="example-full-width">
+        <mat-label>Product Order</mat-label>
+        <mat-select>
+          <mat-option>--</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container [formGroup]="issueDate">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Issue Date</mat-label>
+        <input matInput [matDatepicker]="issue" formControlName={{invoiceFormData[0].issueDate[0].id_issueDate}} >
+        <mat-datepicker-toggle matSuffix [for]="issue"></mat-datepicker-toggle>
+        <mat-datepicker #issue></mat-datepicker>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container>
+      <div style="display: flex">
+        <mat-form-field class="example-full-width">
+          <mat-label>Days from issue date</mat-label>
+          <mat-select (selectionChange)="setDueDate($event.value)">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let day of days" [value]="day">
+              {{day}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <span style="width: 10%;"></span>
+
+        <mat-form-field class="example-full-width" [formGroup]="dueDate">
+          <mat-label>Due Date</mat-label>
+          <input matInput [matDatepicker]="due" formControlName={{invoiceFormData[0].dueDate[0].id_dueDate}}>
+          <mat-datepicker-toggle matSuffix [for]="due"></mat-datepicker-toggle>
+          <mat-datepicker #due></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+    <ng-container *ngTemplateOutlet="grid"></ng-container>
+
+    <ng-container [formGroup]="notes">
+      <mat-form-field class="example-full-width">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName={{invoiceFormData[0].notes[0].id_notes}}></textarea>
+      </mat-form-field>
+    </ng-container>
+
+    <button (click)="onSubmit()">Go to next step</button>
+  </form>

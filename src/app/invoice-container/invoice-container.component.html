@@ -1,0 +1,7 @@
+<invoice-form
+               [grid]="grid"
+               [invoiceFormData]="invoiceFormData"
+               (saveInvoice)="saveData($event)">
+</invoice-form>
+
+<ng-template #grid><invoice-grid></invoice-grid></ng-template>

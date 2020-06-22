@@ -1,0 +1,10 @@
+<ag-grid-angular *ngIf="isClientShown"
+                 style="width: 500px; height: 500px;"
+                 class="ag-theme-alpine"
+                 [gridOptions]="gridOptions"
+                 [rowData]="rowData"
+                 [columnDefs]="columnDefs"
+                 (cellClicked)="onCellClicked($event)">
+</ag-grid-angular>
+
+

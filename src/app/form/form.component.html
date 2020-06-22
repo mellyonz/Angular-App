@@ -1,0 +1,92 @@
+<form class="form-style">
+  <ng-container *ngFor="let form of formData[0].businessName" [formGroup]="businessName">
+    <mat-form-field class="example-full-width">
+      <mat-label>Business Name</mat-label>
+      <input matInput formControlName={{form.id_businessName}} autocomplete="organization">
+    </mat-form-field>
+  </ng-container>
+
+
+  <ng-container *ngFor="let form of formData[0].fullName" [formGroup]="fullName">
+    <div style="display: flex">
+      <mat-form-field class="example-full-width">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName={{form.id_firstName}} autocomplete="first-name">
+      </mat-form-field>
+
+      <span style="width: 10%;"></span>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" formControlName={{form.id_lastName}} autocomplete="family-name">
+      </mat-form-field>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngFor="let form of formData[0].email" [formGroup]="email">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName={{form.id_email}} placeholder="Ex. me@gmail.com" autocomplete="email">
+    </mat-form-field>
+  </ng-container>
+
+
+
+  <ng-container *ngFor="let form of formData[0].address" [formGroup]="address">
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName={{form.id_address}} placeholder="Ex. 100 Main St" autocomplete="street-address"></textarea>
+    </mat-form-field>
+
+    <div style="display: flex">
+      <mat-form-field class="example-full-width">
+        <mat-label>City/Region</mat-label>
+        <input matInput formControlName={{form.id_city}} placeholder="Ex. Christchurch">
+      </mat-form-field>
+
+      <span style="width: 10%;"></span>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName={{form.id_postalCode}} #postalCode minlength="4" maxlength="4" autocomplete="postal-code" placeholder="Ex. 8014">
+        <mat-hint>{{postalCode.value.length}} / 4</mat-hint>
+      </mat-form-field>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngFor="let form of formData[0].number" [formGroup]="number">
+    <mat-form-field class="example-full-width">
+      <mat-label>Number</mat-label>
+      <input matInput formControlName={{form.id_number}} minlength="8" maxlength="15" autocomplete="tel" placeholder="0221902240">
+    </mat-form-field>
+  </ng-container>
+
+
+  <ng-container *ngFor="let form of formData[0].website" [formGroup]="website">
+    <mat-form-field class="example-full-width">
+      <mat-label></mat-label>
+      <input matInput formControlName={{form.id_website}}>
+    </mat-form-field>
+  </ng-container>
+
+
+  <ng-container *ngFor="let form of formData[0].gst" [formGroup]="gst">
+    <mat-form-field class="example-full-width">
+      <mat-label>GST</mat-label>
+      <input matInput formControlName={{form.id_gst}}>
+    </mat-form-field>
+  </ng-container>
+
+
+  <ng-container *ngFor="let form of formData[0].notes" [formGroup]="notes">
+    <mat-form-field class="example-full-width">
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName={{form.id_notes}}></textarea>
+    </mat-form-field>
+  </ng-container>
+
+
+  <button (click)="onSubmit()">Go to next step</button>
+</form>

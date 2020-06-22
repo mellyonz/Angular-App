@@ -3,27 +3,6 @@
   <span style="width: 100%;"></span>
 </mat-toolbar>
 
-<confirmation-bar></confirmation-bar>
+<!--<app-form-container></app-form-container>-->
 
-<client-template></client-template>
-
-
-
-<ag-grid-angular
-                 *ngIf="isClientShown"
-                 style="width: 500px; height: 500px;"
-                 class="ag-theme-alpine"
-                 [gridOptions]="gridOptions"
-                 [rowData]="rowData"
-                 [columnDefs]="columnDefs"
-                 (cellClicked)="onCellClicked($event)">
-</ag-grid-angular>
-
-
-<ag-grid-angular
-                 *ngIf="isCustomerShown"
-                 style="width: 500px; height: 500px;"
-                 class="ag-theme-alpine"
-                 [rowData]="rowData2"
-                 [columnDefs]="columnDefs">
-</ag-grid-angular>
+<app-invoice-container></app-invoice-container>
