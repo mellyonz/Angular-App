@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class FormContainerComponent implements OnInit {
 
-  @Input() newForm = 0
-  @Input() editFormId = "user2"
+  @Input() editFormId = ""; 
+
   itemsObj: AngularFireObject<any>;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -19,84 +19,81 @@ export class FormContainerComponent implements OnInit {
 
   constructor(db: AngularFireDatabase) {
     this.itemsRef = db.list('clients');
-    if (this.editFormId = "") {
-      if (this.newForm) {
-        this.formData = [{
-          businessName: [
-            {
-              id_businessName: "Business Name",
-              value_businessName: ""
-            },
-            {
-              id_businessName: "Trade Name",
-              value_businessName: ""
-            }
-          ],
-          fullName: [
-            {
-              id_firstName: "FirstName",
-              value_firstName: "",
-              id_lastName: "LastName",
-              value_lastName: ""
-            },
-          ],
-          email: [
-            {
-              id_email: "Email",
-              value_email: ""
-            },
-          ],
-          address: [
-            {
-              id_address: "Address",
-              value_address: "",
-              id_city: "City",
-              value_city: "",
-              id_postalCode: "PostalCode",
-              value_postalCode: "",
-            },
-          ],
-          number: [
-            {
-              id_number: "number",
-              value_number: "",
-            },
-          ],
-          website: [
-            {
-              id_website: "website",
-              value_website: "",
-            },
-          ],
-          gst: [
-            {
-              id_gst: "gst",
-              value_gst: "",
-            },
-          ],
-          notes: [
-            {
-              id_notes: "notes",
-              value_notes: "",
-            },
-          ],
-        }]
-      }
-    } else {
-      this.itemsRef.snapshotChanges().subscribe(actions => {
-        actions.forEach(action => {
-          if (action.key == this.editFormId) {
-            //console.log(action.payload.val());
-            this.itemsRef = action.payload.val()
-            //console.log(action.payload.val());
-          }
-        });
+    console.log(this.editFormId)
+    this.itemsRef.snapshotChanges().subscribe(actions => {
+      actions.forEach(action => {
+        if (action.key == this.editFormId) {
+          //console.log(action.payload.val());
+          this.itemsRef = action.payload.val()
+          //console.log(action.payload.val());
+        }
       });
-    }
+    });
   }
 
   ngOnInit() {
-    
+
+    console.log(this.editFormId)
+    this.formData = [{
+      businessName: [
+        {
+          id_businessName: "Business Name",
+          value_businessName: ""
+        },
+        {
+          id_businessName: "Trade Name",
+          value_businessName: ""
+        }
+      ],
+      fullName: [
+        {
+          id_firstName: "FirstName",
+          value_firstName: "",
+          id_lastName: "LastName",
+          value_lastName: ""
+        },
+      ],
+      email: [
+        {
+          id_email: "Email",
+          value_email: ""
+        },
+      ],
+      address: [
+        {
+          id_address: "Address",
+          value_address: "",
+          id_city: "City",
+          value_city: "",
+          id_postalCode: "PostalCode",
+          value_postalCode: "",
+        },
+      ],
+      number: [
+        {
+          id_number: "number",
+          value_number: "",
+        },
+      ],
+      website: [
+        {
+          id_website: "website",
+          value_website: "",
+        },
+      ],
+      gst: [
+        {
+          id_gst: "gst",
+          value_gst: "",
+        },
+      ],
+      notes: [
+        {
+          id_notes: "notes",
+          value_notes: "",
+        },
+      ],
+    }]
   }
 
   setDatabase(formgroups: any)

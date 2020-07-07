@@ -24,7 +24,6 @@
     "@angular/router": "~9.1.1",
     "ag-grid-angular": "^23.0.3",
     "ag-grid-community": "^23.0.2",
-    "angularfire2": "^5.4.2",
     "component": "^1.1.0",
     "cors": "2.8.5",
     "express": "4.17.1",
@@ -37,7 +36,6 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.1",
     "@angular/cli": "~9.1.1",
-    "@angular/compiler-cli": "~9.1.1",
     "@angular/language-service": "~9.1.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
