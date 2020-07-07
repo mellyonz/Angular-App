@@ -3,6 +3,10 @@
   <span style="width: 100%;"></span>
 </mat-toolbar>
 
-<!--<app-form-container></app-form-container>-->
+<app-form-container
+                    [newForm]="newForm"
+                    [editFormId]="editFormId">
+
+</app-form-container>
 
 <app-invoice-container></app-invoice-container>

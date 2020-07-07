@@ -11,36 +11,42 @@ import { Observable } from 'rxjs';
 export class InvoiceContainerComponent implements OnInit {
 
   editInvoiceId = "invoice1"
-  itemsObj: AngularFireObject<any>;
-  itemsRef: AngularFireList<any>;
+  editOrderId = "order2"
+  productOrderDatabase: AngularFireList<any>;
+  invoicesDatabase: AngularFireList<any>;
   items: Observable<any[]>;
   name: Array<any[]>;
   
   invoiceFormData: any[];
+  gridData: any[];
 
 
   constructor(db: AngularFireDatabase) {
 
-    this.itemsRef = db.list('invoices');
+    this.invoicesDatabase = db.list('invoices');
 
-    this.itemsRef.snapshotChanges()
+    this.invoicesDatabase.snapshotChanges()
       .subscribe(actions => {
         actions.forEach(action => {
           if (action.key == this.editInvoiceId) {
-            console.log(action.payload.val());
+            //console.log(action.payload.val());
             this.invoiceFormData = action.payload.val()
-            console.log(action.payload.val());
+            //console.log(action.payload.val());
           }
         });
       });
+
+    this.productOrderDatabase = db.list('productOrder');
+    this.changeOrder(this.editOrderId)
+
   };
 
   ngOnInit(): void {
 
     this.invoiceFormData = [{
-      customerName: [
+       customerName: [
         {
-          select_customerName: "user1",
+          select_customerName: "",
           id_customerName: "",
           value_customerName: "Select a Customer"
         },
@@ -61,7 +67,17 @@ export class InvoiceContainerComponent implements OnInit {
       ],
       productID: [
         {
-          id_productID: "Product",
+          select_productID: "order1",
+          id_customerName: "",
+          value_productID: "Select a Customer"
+        },
+        {
+          id_productID: "order1",
+          value_productID: "Product Order 1"
+        },
+        {
+          id_productID: "order2",
+          value_productID: "Product Order 2"
         },
       ],
       issueDate: [
@@ -84,16 +100,62 @@ export class InvoiceContainerComponent implements OnInit {
       ],
     }]
 
+    this.gridData = [
+      {
+        id_item: "engine1",
+        Item: "Engine",
+        Description: "Part of a car",
+        Vehicle: "Shevy",
+        Units: 1,
+        Price: 1000,
+        Total: 1000,
+      },
+      {
+        id_item: "engine1",
+        Item: "Engine",
+        Description: "Part of a car",
+        Vehicle: "Shevy",
+        Units: 1,
+        Price: 1000,
+        Total: 1000,
+      },
+      {
+        id_item: "engine1",
+        Item: "Engine",
+        Description: "Part of a car",
+        Vehicle: "Shevy",
+        Units: 1,
+        Price: 1000,
+        Total: 1000,
+      },
+    ]
 
   }
 
-  saveData(formgroups: any) {
+  changeOrder(orderID) {
 
-    console.log(formgroups.issueDate.get("Issue Date").value.getFullYear().toString() + "-" +
+    this.productOrderDatabase.snapshotChanges()
+      .subscribe(actions => {
+        actions.forEach(action => {
+          if (action.key == orderID) {
+            console.log(action.payload.val());
+            this.gridData = action.payload.val()
+            console.log(action.payload.val());
+          }
+        });
+      });
+  }
+
+  changeOrderData(event) {
+    this.gridData[event.rowIndex] = event.data
+  }
+
+  saveData(formgroups: any) {
+    /*console.log(formgroups.issueDate.get("Issue Date").value.getFullYear().toString() + "-" +
       (formgroups.issueDate.get("Issue Date").value.getMonth() + 1).toString() + "-" +
       formgroups.issueDate.get("Issue Date").value.getDate().toString())
     console.log(formgroups.dueDate.get("Due Date").value)
-    console.log(formgroups.invoiceID.value)
+    console.log(formgroups.invoiceID.value)*/
     this.invoiceFormData[0].customerName[0] = formgroups.customerName.value
 
     this.invoiceFormData[0].invoiceID[0].value_invoiceID = formgroups.invoiceID.get("Invoice ID").value
@@ -108,6 +170,7 @@ export class InvoiceContainerComponent implements OnInit {
       (formgroups.dueDate.get("Due Date").value.getMonth() + 1).toString() + "-" +
       formgroups.dueDate.get("Due Date").value.getDate().toString()
 
-    this.itemsRef.set(this.editInvoiceId, this.invoiceFormData);
+    this.invoicesDatabase.set(this.editInvoiceId, this.invoiceFormData);
+    this.productOrderDatabase.set(this.editOrderId, this.gridData);
   };
 }

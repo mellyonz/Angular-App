@@ -17,6 +17,7 @@ export class InvoiceFormComponent implements OnChanges {
 
   @Input() grid
   @Input() invoiceFormData
+  @Output() updateGrid = new EventEmitter<Object>();
   @Output() saveInvoice = new EventEmitter<Object>();
 
   days = [7, 14, 21, 28, 29, 30, 31];
@@ -25,9 +26,12 @@ export class InvoiceFormComponent implements OnChanges {
   ngOnChanges(simples: SimpleChanges): void {
     this.selected = new FormControl(this.invoiceFormData[0].customerName[0].select_customerName)
 
-    //console.log(this.customerName.value)
+    //console.log(this.invoiceFormData[0])
 
     this.customerName.setControl("select_customerName", this.selected)
+
+    this.invoiceID.setControl(this.invoiceFormData[0].productID[0].id_productID,
+      new FormControl(this.invoiceFormData[0].productID[0].value_productID))    
 
     this.invoiceID.setControl(this.invoiceFormData[0].invoiceID[0].id_invoiceID,
       new FormControl({ value: this.invoiceFormData[0].invoiceID[0].value_invoiceID, disabled: true }))    
@@ -42,6 +46,10 @@ export class InvoiceFormComponent implements OnChanges {
       new FormControl(this.invoiceFormData[0].notes[0].value_notes, Validators.pattern('^[a-zA-Z0-9. ,]*')))
   }
 
+  onProductOrderSel(event) {
+    console.log(event)
+    this.updateGrid.emit(event.value)
+  }
 
   setDueDate(day) {
     //console.log(this.issueDate.get("Issue Date").value)

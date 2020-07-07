@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CellClickedEvent } from 'ag-grid-community';
+import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'invoice-grid',
   templateUrl: './invoice-grid.component.html',
   styleUrls: ['./invoice-grid.component.scss']
 })
-export class InvoiceGridComponent implements OnInit {
+export class InvoiceGridComponent implements OnChanges {
 
   name = 'not set'
   rowData
@@ -15,19 +14,9 @@ export class InvoiceGridComponent implements OnInit {
   isClientShown: boolean = true;
 
   @Input() gridData
-  @Output() addData = new EventEmitter<Object>();
+  @Output() editGrid = new EventEmitter<Object>();
 
   constructor() {
-    this.rowData = [
-      {
-        Item: 'h',
-        Description: 'Harrison',
-        Vehicle: 'Male',
-        Units: 3,
-        Price: 30,
-        Total: 'Ireland',
-      },
-    ]
     this.gridOptions = {
       columnDefs: [
         { field: 'Item' },
@@ -51,14 +40,13 @@ export class InvoiceGridComponent implements OnInit {
     };
   };
 
-  ngOnInit(): void {
-
-
-
-
+  ngOnChanges(simples: SimpleChanges): void {
+    //console.log(this.gridData)
+    this.rowData = this.gridData
   }
 
-  onCellClicked($event: CellClickedEvent) {
-    this.isClientShown = !this.isClientShown;
+  onCellValueChanged($event) {
+    console.log($event)
+    //this.editGrid.emit($event)
   };
 }

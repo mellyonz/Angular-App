@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { AngularFireObject, AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
@@ -9,9 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class FormContainerComponent implements OnInit {
 
-  
-  requiredForm = 'business'
-  editFormId = "user2"
+  @Input() newForm = 0
+  @Input() editFormId = "user2"
   itemsObj: AngularFireObject<any>;
   itemsRef: AngularFireList<any>;
   items: Observable<any[]>;
@@ -20,77 +19,84 @@ export class FormContainerComponent implements OnInit {
 
   constructor(db: AngularFireDatabase) {
     this.itemsRef = db.list('clients');
-    this.itemsObj = db.object('clients');
-    this.itemsObj.snapshotChanges().subscribe(value => {
-      //console.log(action.payload.val());
-      this.name = value.payload.val()[this.editFormId]
-      console.log(this.formData);
-      this.formData = this.name
-      console.log(this.formData);
-    });
-  };
+    if (this.editFormId = "") {
+      if (this.newForm) {
+        this.formData = [{
+          businessName: [
+            {
+              id_businessName: "Business Name",
+              value_businessName: ""
+            },
+            {
+              id_businessName: "Trade Name",
+              value_businessName: ""
+            }
+          ],
+          fullName: [
+            {
+              id_firstName: "FirstName",
+              value_firstName: "",
+              id_lastName: "LastName",
+              value_lastName: ""
+            },
+          ],
+          email: [
+            {
+              id_email: "Email",
+              value_email: ""
+            },
+          ],
+          address: [
+            {
+              id_address: "Address",
+              value_address: "",
+              id_city: "City",
+              value_city: "",
+              id_postalCode: "PostalCode",
+              value_postalCode: "",
+            },
+          ],
+          number: [
+            {
+              id_number: "number",
+              value_number: "",
+            },
+          ],
+          website: [
+            {
+              id_website: "website",
+              value_website: "",
+            },
+          ],
+          gst: [
+            {
+              id_gst: "gst",
+              value_gst: "",
+            },
+          ],
+          notes: [
+            {
+              id_notes: "notes",
+              value_notes: "",
+            },
+          ],
+        }]
+      }
+    } else {
+      this.itemsRef.snapshotChanges().subscribe(actions => {
+        actions.forEach(action => {
+          if (action.key == this.editFormId) {
+            //console.log(action.payload.val());
+            this.itemsRef = action.payload.val()
+            //console.log(action.payload.val());
+          }
+        });
+      });
+    }
+  }
 
   ngOnInit() {
-    this.formData = [{
-      businessName: [
-        {
-          id_businessName: "Business Name",
-          value_businessName: "test"
-        },
-        {
-          id_businessName: "Trade Name",
-          value_businessName: "test2"
-        }
-      ],
-      fullName: [
-        {
-          id_firstName: "FirstName",
-          value_firstName: "test_first",
-          id_lastName: "LastName",
-          value_lastName: "test_last"
-        },
-      ],
-      email: [
-        {
-          id_email: "Email",
-          value_email: "test"
-        },
-      ],
-      address: [
-        {
-          id_address: "Address",
-          value_address: "test_first",
-          id_city: "City",
-          value_city: "test_last",
-          id_postalCode: "PostalCode",
-          value_postalCode: "test_last",
-        },
-      ],
-      number: [
-        {
-          id_number: "number",
-          value_number: "test",
-        },
-      ],
-      website: [
-        {
-          id_website: "website",
-          value_website: "test",
-        },
-      ],
-      gst: [
-        {
-          id_gst: "gst",
-          value_gst: "test",
-        },
-      ],
-      notes: [
-        {
-          id_notes: "notes",
-          value_notes: "",
-        },
-      ],
-    }]
+    
   }
 
   setDatabase(formgroups: any)
