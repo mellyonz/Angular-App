@@ -25,8 +25,6 @@ From all the research I came across 3 big things Angular CLI does differently to
 
 Node.js is primary terminal to interface with Angular CLI. Once node.js is installed you need to install the npm package manager from there the Angular CLI can be installed as a package with.
 
-[CITATION Ang9 \l 1033]
-
 npm install -g @Angular/cli
 
 From here a bunch of ng commands.
@@ -59,8 +57,6 @@ _ng generate module routing:_ This can generate structure but the reference to t
 
 There is no longer just html but an app and by extension many components. There is only one app and Within the single apps component there can be many sub-components, these can be switched between with a router.
 
-[CITATION Ang2 \l 1033]
-
 All other html pages must use this router module to switch between html pages.
 
 ## Scripts: App.Component.ts
@@ -76,14 +72,10 @@ The AppComponentis a bit like the root or index of the html page. In here is all
 This does behave a lot like a header allowing you to import varies scripts that are named modules, these can used inside the other two components.
  There are some great advantages as well since modules can be directly access using their special tags. The difference here is that a header with scripts need class or id tag to use their scripts.
 
-[CITATION Ang1 \l 1033]
-
 ## Templating
 
 The final amazing thing these can become templates with just an app.component.ts as the core TypeScript. This lets you create small modular HTML inside a larger HTML and these modular scripts could be reused anywhere; This creates the ng content client side.
  Pushed to the limit an index html could house the entire website and you would never need to leave it or need reload the page.
-
-[CITATION Ang19 \l 1033]
 
 ## Modules
 
@@ -95,15 +87,11 @@ These are an interface to handle asynchronous data. They are safer than ngModel 
 
 Observables are the safest way to two-way bind variables/data.
 
-[CITATION Ang14 \l 1033]
-
 ### Lazy loading
 
 By using Routes, you can change the route div tag to a different component&#39;s selector. These other components are never loaded until the event changes the router link. ![](RackMultipart20200715-4-1q7atxy_html_c861a7352e77670d.png)
 
 The advantage is that your app doesn&#39;t load other pages until it needs to speed up initial webpage load times by adding some website navigation load times.
-
-[CITATION Ang12 \l 1033]
 
 ### Singleton service
 
@@ -111,11 +99,7 @@ I know of this since it used in many Angular tutorials but never played around w
 
 It is sometimes used to observe changes in data (two-way databinding) in Angular.io but I have found that isn&#39;t always a best practise.
 
-[CITATION Ang13 \l 1033]
-
 ## Database
-
-## Brief
 
 The database used in Partly is very complex and multiple types of cloud-based servers are used. There are many options to replicate this, but I need to keep in mind my project does not need to deliver a database
 
@@ -123,8 +107,6 @@ The database used in Partly is very complex and multiple types of cloud-based se
 
 This is what I used previously with my PHP class (BCPR294 - Server-Side Web Programming) and is easy to set up and doesn&#39;t require excessive knowledge of server commands.
  The biggest downside is I must use php code to interact with the server and php is not part of the deliverables.
-
-[CITATION PHP18 \l 1033]
 
 ## Node.js with express to use MongoDB
 
@@ -134,8 +116,6 @@ The real downside is you must run the node.js server alongside the app (like wit
 
 If I were to create from scratch this would be the best implementation since I could create a front end to control the server.
 
-[CITATION Bez20 \l 1033]
-
 ## Firebase
 
 (The obvious choice)
@@ -143,15 +123,12 @@ If I were to create from scratch this would be the best implementation since I c
 Again, I have used this during the mobile app development class. (BCIT388 - Mobile Technology).
 
 The main thing to note it is just the Firebase website and a module called Angularfire needed for its implementation. The running of the server is done through the website interface and does not need to be managed by me.
- The module seems to be made by the Angular team but is extremely new and has almost no tutorials outside the modules GitHub Readme.
+The module seems to be made by the Angular team but is extremely new and has almost no tutorials outside the modules GitHub Readme.
 
-[CITATION Ang8 \l 1033]
 
 The main thing to note in its implementation is I must use a Firebase key or authentication ticket to access the database.
 
-## Forms
-
-## Brief
+# Forms
 
 Forms are HTML5 tags that can export and compile different input field into an object. PHP can unpack this object to then run some logic for an intended result like storing the information in a database.
 
@@ -166,9 +143,7 @@ Templates validation logic is normally inside the html and therefore asynchronou
 
 Reactive validation would put most of the logic in the component and is normally not asynchronous so validation would take place after the submission. This is exactly like normal HTML.
 
-[CITATION Ang3 \l 1033]
-
-### Reactive
+## Reactive
 
 After much thought I believe I don&#39;t need the extra features or work associated with reactive templates specially to make them asynchronous.
 
@@ -176,13 +151,9 @@ At the same time looking over materials module there is the ability to control t
 
 This means I get all the advantage of templates forms being asynchronous and be able to use reactive forms with their much better logic.
 
-[CITATION ang \l 1033]
-
 We won&#39;t need overly complex validators and materials can provide the asynchronous user-friendly approach.
 
-[CITATION Man18 \l 1033]
-
-## Material or native html
+### Material or native html
 
 Materials provides us with a way to reference an object that can hold let&#39;s say combo box options. This will help especially when templating input elements since many alternative options could be applied to a combo box. ![](RackMultipart20200715-4-1q7atxy_html_1226a3be27317e4e.png)
 
@@ -192,7 +163,6 @@ This added focus on separating logic really helps us maximise the OOP of any giv
 
 Hints are amazing tool and provide what I wanted to help the user fill out the forms
 
-![](RackMultipart20200715-4-1q7atxy_html_7d5fcd93743c064d.png)
 
 You could submit the, but the reactive validator will check the field as well.
 
@@ -200,11 +170,8 @@ You could submit the, but the reactive validator will check the field as well.
 
 One of the amazing abilities of Angular form&#39;s is the built-in validators. These can be set by assigning in the Form Control class with a validator, this will check the user input before they submit the form (template forms only).
 
-![](RackMultipart20200715-4-1q7atxy_html_9ea366288f608b82.png)
 
-## Presentational and Container Components
-
-## Brief
+# Presentational and Container Components
 
 This is such a complex best practice to address since Angular itself does not use or recommend it, but I believe this is immensely power for front end systems.
  You could look at it like purposeful merging of similar scripts into a component.
@@ -230,10 +197,6 @@ The container holds all the information for a page and can be small with just re
 
 The power of this smarter component is that it can be more reactive to user inputs rather than having extensively functions in the app itself that are being called. Every page or container would just react to the users input then and there.
 
-[CITATION Dan \l 1033]
-
-[CITATION Ang20 \l 1033]
-
 ### Inputs
 
 Init or onload inputs, most basic and will only be updated on refresh.
@@ -247,15 +210,10 @@ An Obserable object or two-way binding could be used but rarely and should invol
 These are simple since they are event handlers passing return variables into the parent.
  Sometimes these a event from the button being pushed but can even be events triggered by conditions.
 
-[CITATION Ang10 \l 1033]
-
-## Dynamic Creation
-
-## Brief
+# Dynamic Creation
 
 Structured directives are the root of dynamic creation in Angular, they are an amazing feature for only turning off or on content without hiding it but also duplicate content with a foreach style loop, they can also check a conditional state and be very direct with templates.
 
-[CITATION Ang11 \l 1033]
 
 ## NG
 
@@ -269,8 +227,6 @@ A simple conditional statement to disable content.
 
 Retains the conditional element by duplicating any content inside an array if there is any. Each loop in the array it could also provide a completely different element on the page.
 
-[CITATION Luk19 \l 1033]
-
 ### _NgSwitch_
 
 Very similar but instead of a loop its askes the state of the given directive. If the state is not present it will not show the contents.
@@ -280,12 +236,6 @@ Very similar but instead of a loop its askes the state of the given directive. I
 These each provide different way on templating content. They are like div tags that can either be manipulated with other ng directives or completely replaced. TemplateRef and ViewContainerRef can act like variables to be placed on the page.
 
 You can even pass a template as a input placing it with ngTemplateOutlet.
-
-[CITATION Ang4 \l 1033]
-
-[CITATION ang \l 1033]
-
-[CITATION Ang19 \l 1033]
 
 ## Dynamic form creation
 
@@ -302,19 +252,12 @@ Looking over the Angular.io information some of that is shown could apply to my 
 
 I already know about \*ngFor so I just need to supply it with the correct data.
 
-[CITATION Ang7 \l 1033][CITATION Kri19 \l 1033]
 
 # Implementation
 
-## Angular
-
-## Brief
+# Angular
 
 Not much needs to be said on the implementation since I used most of the Angular set up and only the modules are an option aspect of best practice.
-
-![](RackMultipart20200715-4-1q7atxy_html_94ee37e6849f771e.png)
-
-![](RackMultipart20200715-4-1q7atxy_html_9f59c7017b831ea6.png)
 
 I created everything I needed directly from the best practices of Angular.io.
 
@@ -347,17 +290,6 @@ There is only one source for this since its new but the best thing I found is a 
 
 This will let me create and update with one function so no need for any logic.
 
-### Initial database instance
-
-![](RackMultipart20200715-4-1q7atxy_html_a6dfec36231c8388.png)
-
-### Final database instance
-
-![](RackMultipart20200715-4-1q7atxy_html_32406f2088f34e16.png)
- I switched to use lists and not objects since they correctly updated.
-
-![](RackMultipart20200715-4-1q7atxy_html_b6589ef5bdd0d7be.png)
-
 ## Database structure
 
 I used separate formGroups instead of just using the profileForm (I laid out before).
@@ -377,13 +309,9 @@ Firebase -\&gt;formData-\&gt;\*ngFor&amp;formGroups-\&gt;onSubmit-\&gt;formData-
 
 These all need to be consistent and not generate other types of array/object formats. This means the database will contain arrays indexes of 0 since even every data entry could have potential duplications (I won&#39;t use them)
 
-![](RackMultipart20200715-4-1q7atxy_html_59f8a501d6a7fa25.png)
-
 Formatting between them is possible but this should be relegated to another component one not required by the specifications.
 
-## Forms
-
-## Brief
+# Forms
 
 Reactive forms need all the validation to be assigned on the creation of each input, so I need to map out what I need before I&#39;m implement any form fields. I looked for best practised during the creation of each validation field.
 
@@ -395,11 +323,11 @@ Error logic should be present as an individual element to be added during the pr
 
 | Input Name | Input type | Input hint or restriction | Validation needed |
 | --- | --- | --- | --- |
-| Company name | Text | No symbols but some exceptions[CITATION Sma \l 1033],Required | Required ornot RequiredPattern
+| Company name | Text | No symbols but some exceptions,Required | Required ornot RequiredPattern
  |
 | First name | Text | No symbols, required | RequiredPattern |
 | Last name | Text | No symbols, required | RequiredPattern |
-| Email | Email | 2 email segments with different symbol requirements [CITATION Wik5 \l 1033], required | RequiredEmail |
+| Email | Email | 2 email segments with different symbol requirements, required | RequiredEmail |
 | Number | Number | Just Numbers, +
  at least 8, max 13 | PatternminLengthmaxLength |
 | Website | URL | No symbols except hyphen and full stop | Pattern |
@@ -409,19 +337,7 @@ Error logic should be present as an individual element to be added during the pr
 | GST No. | Number | Just numbers | Pattern |
 | Notes | Text Area | No symbols | Pattern |
 
-## Ng-containers and Autocomplete
-
-[CITATION moz \l 1033][CITATION Ang4 \l 1033]
-
-![](RackMultipart20200715-4-1q7atxy_html_ba1c2f123944ba0c.png) ![](RackMultipart20200715-4-1q7atxy_html_1144531629dbf840.png)
-
-## Validation
-
-![](RackMultipart20200715-4-1q7atxy_html_34ef0e345f2b3d68.png)
-
-![](RackMultipart20200715-4-1q7atxy_html_d8fbd8169a6a73c9.png)
-
-## Presentational and Container Components
+# Presentational and Container Components
 
 ## Separate a container from a normal component
 
@@ -466,32 +382,14 @@ The advantages to the type of form is data can be observed without a submission 
 
 Observables would be the best way to achieve this rather than something like two-way binding, another option is using ng triggers whenever a user edits a input box.
 
-## Resulting Component Layout
 
-![](RackMultipart20200715-4-1q7atxy_html_79ea068ee421dbf9.png)
-
-## Dynamic Creation
-
-## Brief
+# Dynamic Creation
 
 The best way to do this is provide data to \*ngFor is a default array of objects with array of objects inside them. I could use switches but if I just render or draw what is inside the array object.
 
-![](RackMultipart20200715-4-1q7atxy_html_541e2e676386ddc5.png)
-
 This was on the Angular website and showcases how I can do it. The advantage is that It could be an input from the container, the one-way data binding would generate content instantly.
 
-## Duplicate Ng-Containers &amp; Dynamic form creation
-
-Based on the knowledge of ngFor we can build a forms sole based on an array.
-
-![](RackMultipart20200715-4-1q7atxy_html_f21b848f17b32bdb.png)
-
-![](RackMultipart20200715-4-1q7atxy_html_acdc33cf3b16748c.png)
-
-![](RackMultipart20200715-4-1q7atxy_html_10f92fa4474e613e.png) ![](RackMultipart20200715-4-1q7atxy_html_1d174ea66cb6a35a.png)
-
-##
-## Compare and Contrast
+# Compare and Contrast
 
 | **Section** | **Description** | **Researched?** | **Attempted?** | **Implemented?** |
 | --- | --- | --- | --- | --- |
