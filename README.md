@@ -1,5 +1,3 @@
-![](RackMultipart20200715-4-1q7atxy_html_6af57b0addfc99bf.gif)
-
 # Best Practices
 
 ## Introduction
@@ -64,8 +62,6 @@ All other html pages must use this router module to switch between html pages.
 The AppComponentis a bit like the root or index of the html page. In here is all the logic of the app, it acts like a script. It can store functions which can be later called with buttons like a JavaScript DOM Event Listener.
  There is amazing power in this rather than having a script find a buttons id and adding listener to it.
  The AppComponent can be updated and immediate the content inside the html can be changed.
-
-[CITATION Ang1 \l 1033]
 
 ## Header: App.modules.ts
 
@@ -151,7 +147,7 @@ At the same time looking over materials module there is the ability to control t
 
 This means I get all the advantage of templates forms being asynchronous and be able to use reactive forms with their much better logic.
 
-We won&#39;t need overly complex validators and materials can provide the asynchronous user-friendly approach.
+We won't need overly complex validators and materials can provide the asynchronous user-friendly approach.
 
 ### Material or native html
 
@@ -183,10 +179,6 @@ The form presentational component is where all the div tags or displays are stor
 The advantage to this is that you could customise, move and reuse different presentations with another container.
 
 Events will control that state of each container so a child Presenter class that triggers and event will pass it to the parent containers class changing the state.
-
-[CITATION Ang6 \l 1033] (Good Angular tutorial)
-
-[CITATION Lar18 \l 1033](Uses the result of tutorial to make the presentational and containers)
 
 ## Container components
 
@@ -323,13 +315,11 @@ Error logic should be present as an individual element to be added during the pr
 
 | Input Name | Input type | Input hint or restriction | Validation needed |
 | --- | --- | --- | --- |
-| Company name | Text | No symbols but some exceptions,Required | Required ornot RequiredPattern
- |
+| Company name | Text | No symbols but some exceptions, required | RequiredPattern |
 | First name | Text | No symbols, required | RequiredPattern |
 | Last name | Text | No symbols, required | RequiredPattern |
 | Email | Email | 2 email segments with different symbol requirements, required | RequiredEmail |
-| Number | Number | Just Numbers, +
- at least 8, max 13 | PatternminLengthmaxLength |
+| Number | Number | Just Numbers, + at least 8, max 13 | PatternminLengthmaxLength |
 | Website | URL | No symbols except hyphen and full stop | Pattern |
 | Address | Text Area | No symbols | Pattern |
 | City | Text | No symbols | Pattern |
