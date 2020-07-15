@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This entire project was filled with self-learning so some of the order in the methodology was a little different in practice. Sometimes especially when using Angular I found the best practise after implementing the result.
- In my comparisons I will reference many best practises I should be using but never got around to adapting into the project.
+This entire project was filled with self-learning so some of the order in the methodology was a little different in practice. When using Angular I found the best practise after implementing the result.
+In my comparisons I will reference many best practises I should be using but never got around to adapting into the project.
 
 Component best practises don&#39;t really exist in any meaningful sense so container and presentational components are the only example I could source from reputable developers. Angular take on components is shallow and use there like classes but they are so much more powerful.
- I also used something called the SAM pattern to help me understand containers and presenters, but it is not a best practice I can apply to this project.
+I also used something called the SAM pattern to help me understand containers and presenters, but it is not a best practice I can apply to this project.
 
 Overall Angular is latest version of front-end systems, Web-based apps are the future of business apps and websites so this a good area for a project to be in.
 
